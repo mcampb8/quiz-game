@@ -1,0 +1,45 @@
+body{
+    background-color: mediumseagreen;
+}
+.buttons-grid{
+    width: 40vw;
+    border: solid black;
+   /* display:flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    position: relative;
+    left:350px;
+    top:200px;
+    gap: 1rem;
+    padding: 1rem;
+}
+.box{
+    width: 18vw;
+    height: 10vh;
+    border: solid black;
+    display:flex;
+    flex: 0 0 48%;
+    position: relative;
+    padding:10px;
+    
+}
+.scoreboard{
+    width: 18vw;
+    height: 20vw;
+    border: solid black;
+    position:relative;
+}
+.hide {
+    display:none;
+}
+.box1{
+}
+.box2{
+}
+.box3{
+
+}
+.box4{
+}
