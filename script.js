@@ -6,8 +6,8 @@ var time = document.getElementById("time");
 console.log(time);
 var showButtons = document.getElementById("buttons");
 var askQuestion
-var singleAnswers = []
 var playerAnswer
+var currentQuestionIndex =0;
 
 var questions = [{
     query: "Who won the World Cup in 2022?",
@@ -50,15 +50,29 @@ button.addEventListener("click", function(){
 });
 function displayQuestion(){
 //     showButtons.classList.remove("hide");
-for(var i =0; i<questions.length;i++){
-    var dispAnswers = questions[i].possibleAnswers;
-    JSON.stringify(dispAnswers);
-    for(var i = 0; i<dispAnswers.length; i++){
-        singleAnswers[i] = dispAnswers[i].split(",");
-        console.log(singleAnswers);
+    document.getElementById("buttons").textContent ="";
+    var dispAnswers = questions[currentQuestionIndex].possibleAnswers;
+    var showQuestion = questions[currentQuestionIndex].query;
+    console.log(showQuestion);
+    for(var j = 0; j<dispAnswers.length; j++){
+        var singleAnswers = dispAnswers[j];
+        var answerButton = document.createElement("button");
+        answerButton.innerText = singleAnswers;
+        document.getElementById("buttons").appendChild(answerButton);
+        answerButton.addEventListener("click", checkAnswer)
+
     }
-}
-if(playerAnswer !== questions.correctAnswer){
-    secondsRemaining = secondsRemaining - 10;
-}
+    document.getElementById("question").textContent = showQuestion;
  }
+ function checkAnswer(event){
+    var answerText = event.target.textContent;
+     if(answerText !== questions[currentQuestionIndex].correctAnswer){
+    secondsRemaining = secondsRemaining - 10;
+} else{
+    console.log("correct");
+}
+    currentQuestionIndex++;
+    displayQuestion();
+ }
+
+
